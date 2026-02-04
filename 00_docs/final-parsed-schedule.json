@@ -1,0 +1,1788 @@
+{
+  "ageGroup": "U12",
+  "groupTeamMapping": {
+    "1": {
+      "2": "인천연수구청",
+      "3": "컵FCU",
+      "4": "아FC"
+    },
+    "2": {
+      "2": "인천연수구청",
+      "3": "컵FCU",
+      "4": "아FC"
+    },
+    "3": {
+      "2": "인천연수구청",
+      "3": "컵FCU",
+      "4": "아FC"
+    },
+    "4": {
+      "2": "인천연수구청",
+      "3": "컵FCU",
+      "4": "아FC"
+    },
+    "5": {
+      "2": "인천연수구청",
+      "3": "컵FCU",
+      "4": "아FC"
+    },
+    "6": {
+      "2": "인천연수구청",
+      "3": "컵FCU",
+      "4": "아FC"
+    },
+    "7": {
+      "2": "인천연수구청",
+      "3": "컵FCU",
+      "4": "아FC"
+    },
+    "8": {
+      "2": "인천연수구청",
+      "3": "컵FCU",
+      "4": "아FC"
+    },
+    "9": {
+      "2": "인천연수구청",
+      "3": "컵FCU",
+      "4": "아FC"
+    },
+    "10": {
+      "2": "인천연수구청",
+      "3": "컵FCU",
+      "4": "아FC"
+    },
+    "11": {
+      "2": "인천연수구청",
+      "3": "컵FCU",
+      "4": "아FC"
+    },
+    "12": {
+      "2": "인천연수구청",
+      "3": "컵FCU",
+      "4": "아FC"
+    },
+    "13": {
+      "2": "인천연수구청",
+      "3": "컵FCU",
+      "4": "아FC"
+    },
+    "14": {
+      "2": "인천연수구청",
+      "3": "컵FCU",
+      "4": "아FC"
+    },
+    "15": {
+      "2": "인천연수구청",
+      "3": "컵FCU",
+      "4": "아FC"
+    },
+    "16": {
+      "2": "인천연수구청",
+      "3": "컵FCU",
+      "4": "아FC"
+    }
+  },
+  "matches": [
+    {
+      "number": 1,
+      "date": "2026-02-06",
+      "time": "14:00",
+      "venue": "A",
+      "group": "1",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 2,
+      "date": "2026-02-06",
+      "time": "15:00",
+      "venue": "A",
+      "group": "1",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 3,
+      "date": "2026-02-06",
+      "time": "16:00",
+      "venue": "A",
+      "group": "1",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 4,
+      "date": "2026-02-06",
+      "time": "17:00",
+      "venue": "A",
+      "group": "1",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 5,
+      "date": "2026-02-06",
+      "time": "14:00",
+      "venue": "B",
+      "group": "1",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 6,
+      "date": "2026-02-06",
+      "time": "15:00",
+      "venue": "B",
+      "group": "1",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 7,
+      "date": "2026-02-06",
+      "time": "16:00",
+      "venue": "B",
+      "group": "1",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 8,
+      "date": "2026-02-06",
+      "time": "17:00",
+      "venue": "B",
+      "group": "1",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 9,
+      "date": "2026-02-06",
+      "time": "14:00",
+      "venue": "C",
+      "group": "1",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 10,
+      "date": "2026-02-06",
+      "time": "15:00",
+      "venue": "C",
+      "group": "1",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 11,
+      "date": "2026-02-06",
+      "time": "16:00",
+      "venue": "C",
+      "group": "1",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 12,
+      "date": "2026-02-06",
+      "time": "17:00",
+      "venue": "C",
+      "group": "1",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 13,
+      "date": "2026-02-06",
+      "time": "14:00",
+      "venue": "G",
+      "group": "1",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 14,
+      "date": "2026-02-06",
+      "time": "15:00",
+      "venue": "G",
+      "group": "1",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 15,
+      "date": "2026-02-06",
+      "time": "16:00",
+      "venue": "G",
+      "group": "1",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 16,
+      "date": "2026-02-06",
+      "time": "17:00",
+      "venue": "G",
+      "group": "1",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 17,
+      "date": "2026-02-06",
+      "time": "14:00",
+      "venue": "D",
+      "group": "2",
+      "homeTeamNumber": 3,
+      "awayTeamNumber": 4
+    },
+    {
+      "number": 18,
+      "date": "2026-02-06",
+      "time": "15:00",
+      "venue": "D",
+      "group": "2",
+      "homeTeamNumber": 3,
+      "awayTeamNumber": 4
+    },
+    {
+      "number": 19,
+      "date": "2026-02-06",
+      "time": "16:00",
+      "venue": "D",
+      "group": "2",
+      "homeTeamNumber": 3,
+      "awayTeamNumber": 4
+    },
+    {
+      "number": 20,
+      "date": "2026-02-06",
+      "time": "17:00",
+      "venue": "D",
+      "group": "2",
+      "homeTeamNumber": 3,
+      "awayTeamNumber": 4
+    },
+    {
+      "number": 21,
+      "date": "2026-02-06",
+      "time": "14:00",
+      "venue": "E",
+      "group": "2",
+      "homeTeamNumber": 3,
+      "awayTeamNumber": 4
+    },
+    {
+      "number": 22,
+      "date": "2026-02-06",
+      "time": "15:00",
+      "venue": "E",
+      "group": "2",
+      "homeTeamNumber": 3,
+      "awayTeamNumber": 4
+    },
+    {
+      "number": 23,
+      "date": "2026-02-06",
+      "time": "16:00",
+      "venue": "E",
+      "group": "2",
+      "homeTeamNumber": 3,
+      "awayTeamNumber": 4
+    },
+    {
+      "number": 24,
+      "date": "2026-02-06",
+      "time": "17:00",
+      "venue": "E",
+      "group": "2",
+      "homeTeamNumber": 3,
+      "awayTeamNumber": 4
+    },
+    {
+      "number": 25,
+      "date": "2026-02-06",
+      "time": "14:00",
+      "venue": "F",
+      "group": "2",
+      "homeTeamNumber": 3,
+      "awayTeamNumber": 4
+    },
+    {
+      "number": 26,
+      "date": "2026-02-06",
+      "time": "15:00",
+      "venue": "F",
+      "group": "2",
+      "homeTeamNumber": 3,
+      "awayTeamNumber": 4
+    },
+    {
+      "number": 27,
+      "date": "2026-02-06",
+      "time": "16:00",
+      "venue": "F",
+      "group": "2",
+      "homeTeamNumber": 3,
+      "awayTeamNumber": 4
+    },
+    {
+      "number": 28,
+      "date": "2026-02-06",
+      "time": "17:00",
+      "venue": "F",
+      "group": "2",
+      "homeTeamNumber": 3,
+      "awayTeamNumber": 4
+    },
+    {
+      "number": 29,
+      "date": "2026-02-06",
+      "time": "14:00",
+      "venue": "H",
+      "group": "2",
+      "homeTeamNumber": 3,
+      "awayTeamNumber": 4
+    },
+    {
+      "number": 30,
+      "date": "2026-02-06",
+      "time": "15:00",
+      "venue": "H",
+      "group": "2",
+      "homeTeamNumber": 3,
+      "awayTeamNumber": 4
+    },
+    {
+      "number": 31,
+      "date": "2026-02-06",
+      "time": "16:00",
+      "venue": "H",
+      "group": "2",
+      "homeTeamNumber": 3,
+      "awayTeamNumber": 4
+    },
+    {
+      "number": 32,
+      "date": "2026-02-06",
+      "time": "17:00",
+      "venue": "H",
+      "group": "2",
+      "homeTeamNumber": 3,
+      "awayTeamNumber": 4
+    },
+    {
+      "number": 33,
+      "date": "2026-02-07",
+      "time": "14:00",
+      "venue": "A",
+      "group": "3",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 34,
+      "date": "2026-02-07",
+      "time": "15:00",
+      "venue": "A",
+      "group": "3",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 35,
+      "date": "2026-02-07",
+      "time": "16:00",
+      "venue": "A",
+      "group": "3",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 36,
+      "date": "2026-02-07",
+      "time": "17:00",
+      "venue": "A",
+      "group": "3",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 37,
+      "date": "2026-02-07",
+      "time": "14:00",
+      "venue": "B",
+      "group": "3",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 38,
+      "date": "2026-02-07",
+      "time": "15:00",
+      "venue": "B",
+      "group": "3",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 39,
+      "date": "2026-02-07",
+      "time": "16:00",
+      "venue": "B",
+      "group": "3",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 40,
+      "date": "2026-02-07",
+      "time": "17:00",
+      "venue": "B",
+      "group": "3",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 41,
+      "date": "2026-02-07",
+      "time": "14:00",
+      "venue": "C",
+      "group": "3",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 42,
+      "date": "2026-02-07",
+      "time": "15:00",
+      "venue": "C",
+      "group": "3",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 43,
+      "date": "2026-02-07",
+      "time": "16:00",
+      "venue": "C",
+      "group": "3",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 44,
+      "date": "2026-02-07",
+      "time": "17:00",
+      "venue": "C",
+      "group": "3",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 45,
+      "date": "2026-02-07",
+      "time": "14:00",
+      "venue": "G",
+      "group": "3",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 46,
+      "date": "2026-02-07",
+      "time": "15:00",
+      "venue": "G",
+      "group": "3",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 47,
+      "date": "2026-02-07",
+      "time": "16:00",
+      "venue": "G",
+      "group": "3",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 48,
+      "date": "2026-02-07",
+      "time": "17:00",
+      "venue": "G",
+      "group": "3",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 49,
+      "date": "2026-02-07",
+      "time": "14:00",
+      "venue": "D",
+      "group": "4",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 50,
+      "date": "2026-02-07",
+      "time": "15:00",
+      "venue": "D",
+      "group": "4",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 51,
+      "date": "2026-02-07",
+      "time": "16:00",
+      "venue": "D",
+      "group": "4",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 52,
+      "date": "2026-02-07",
+      "time": "17:00",
+      "venue": "D",
+      "group": "4",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 53,
+      "date": "2026-02-07",
+      "time": "14:00",
+      "venue": "E",
+      "group": "4",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 54,
+      "date": "2026-02-07",
+      "time": "15:00",
+      "venue": "E",
+      "group": "4",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 55,
+      "date": "2026-02-07",
+      "time": "16:00",
+      "venue": "E",
+      "group": "4",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 56,
+      "date": "2026-02-07",
+      "time": "17:00",
+      "venue": "E",
+      "group": "4",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 57,
+      "date": "2026-02-07",
+      "time": "14:00",
+      "venue": "F",
+      "group": "4",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 58,
+      "date": "2026-02-07",
+      "time": "15:00",
+      "venue": "F",
+      "group": "4",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 59,
+      "date": "2026-02-07",
+      "time": "16:00",
+      "venue": "F",
+      "group": "4",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 60,
+      "date": "2026-02-07",
+      "time": "17:00",
+      "venue": "F",
+      "group": "4",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 61,
+      "date": "2026-02-07",
+      "time": "14:00",
+      "venue": "H",
+      "group": "4",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 62,
+      "date": "2026-02-07",
+      "time": "15:00",
+      "venue": "H",
+      "group": "4",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 63,
+      "date": "2026-02-07",
+      "time": "16:00",
+      "venue": "H",
+      "group": "4",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 64,
+      "date": "2026-02-07",
+      "time": "17:00",
+      "venue": "H",
+      "group": "4",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 65,
+      "date": "2026-02-08",
+      "time": "14:00",
+      "venue": "A",
+      "group": "5",
+      "homeTeamNumber": 2,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 66,
+      "date": "2026-02-08",
+      "time": "15:00",
+      "venue": "A",
+      "group": "5",
+      "homeTeamNumber": 2,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 67,
+      "date": "2026-02-08",
+      "time": "16:00",
+      "venue": "A",
+      "group": "5",
+      "homeTeamNumber": 2,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 68,
+      "date": "2026-02-08",
+      "time": "17:00",
+      "venue": "A",
+      "group": "5",
+      "homeTeamNumber": 2,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 69,
+      "date": "2026-02-08",
+      "time": "14:00",
+      "venue": "B",
+      "group": "5",
+      "homeTeamNumber": 2,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 70,
+      "date": "2026-02-08",
+      "time": "15:00",
+      "venue": "B",
+      "group": "5",
+      "homeTeamNumber": 2,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 71,
+      "date": "2026-02-08",
+      "time": "16:00",
+      "venue": "B",
+      "group": "5",
+      "homeTeamNumber": 2,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 72,
+      "date": "2026-02-08",
+      "time": "17:00",
+      "venue": "B",
+      "group": "5",
+      "homeTeamNumber": 2,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 73,
+      "date": "2026-02-08",
+      "time": "14:00",
+      "venue": "C",
+      "group": "5",
+      "homeTeamNumber": 2,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 74,
+      "date": "2026-02-08",
+      "time": "15:00",
+      "venue": "C",
+      "group": "5",
+      "homeTeamNumber": 2,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 75,
+      "date": "2026-02-08",
+      "time": "16:00",
+      "venue": "C",
+      "group": "5",
+      "homeTeamNumber": 2,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 76,
+      "date": "2026-02-08",
+      "time": "17:00",
+      "venue": "C",
+      "group": "5",
+      "homeTeamNumber": 2,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 77,
+      "date": "2026-02-08",
+      "time": "14:00",
+      "venue": "G",
+      "group": "5",
+      "homeTeamNumber": 2,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 78,
+      "date": "2026-02-08",
+      "time": "15:00",
+      "venue": "G",
+      "group": "5",
+      "homeTeamNumber": 2,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 79,
+      "date": "2026-02-08",
+      "time": "16:00",
+      "venue": "G",
+      "group": "5",
+      "homeTeamNumber": 2,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 80,
+      "date": "2026-02-08",
+      "time": "17:00",
+      "venue": "G",
+      "group": "5",
+      "homeTeamNumber": 2,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 81,
+      "date": "2026-02-08",
+      "time": "14:00",
+      "venue": "D",
+      "group": "6",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 1
+    },
+    {
+      "number": 82,
+      "date": "2026-02-08",
+      "time": "15:00",
+      "venue": "D",
+      "group": "6",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 1
+    },
+    {
+      "number": 83,
+      "date": "2026-02-08",
+      "time": "16:00",
+      "venue": "D",
+      "group": "6",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 1
+    },
+    {
+      "number": 84,
+      "date": "2026-02-08",
+      "time": "17:00",
+      "venue": "D",
+      "group": "6",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 1
+    },
+    {
+      "number": 85,
+      "date": "2026-02-08",
+      "time": "14:00",
+      "venue": "E",
+      "group": "6",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 1
+    },
+    {
+      "number": 86,
+      "date": "2026-02-08",
+      "time": "15:00",
+      "venue": "E",
+      "group": "6",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 1
+    },
+    {
+      "number": 87,
+      "date": "2026-02-08",
+      "time": "16:00",
+      "venue": "E",
+      "group": "6",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 1
+    },
+    {
+      "number": 88,
+      "date": "2026-02-08",
+      "time": "17:00",
+      "venue": "E",
+      "group": "6",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 1
+    },
+    {
+      "number": 89,
+      "date": "2026-02-08",
+      "time": "14:00",
+      "venue": "F",
+      "group": "6",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 1
+    },
+    {
+      "number": 90,
+      "date": "2026-02-08",
+      "time": "15:00",
+      "venue": "F",
+      "group": "6",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 1
+    },
+    {
+      "number": 91,
+      "date": "2026-02-08",
+      "time": "16:00",
+      "venue": "F",
+      "group": "6",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 1
+    },
+    {
+      "number": 92,
+      "date": "2026-02-08",
+      "time": "17:00",
+      "venue": "F",
+      "group": "6",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 1
+    },
+    {
+      "number": 93,
+      "date": "2026-02-08",
+      "time": "14:00",
+      "venue": "H",
+      "group": "6",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 1
+    },
+    {
+      "number": 94,
+      "date": "2026-02-08",
+      "time": "15:00",
+      "venue": "H",
+      "group": "6",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 1
+    },
+    {
+      "number": 95,
+      "date": "2026-02-08",
+      "time": "16:00",
+      "venue": "H",
+      "group": "6",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 1
+    },
+    {
+      "number": 96,
+      "date": "2026-02-08",
+      "time": "17:00",
+      "venue": "H",
+      "group": "6",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 1
+    },
+    {
+      "number": 1,
+      "date": "2026-02-08",
+      "time": "10:00",
+      "venue": "A",
+      "group": "1",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 2,
+      "date": "2026-02-08",
+      "time": "10:50",
+      "venue": "A",
+      "group": "1",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 3,
+      "date": "2026-02-08",
+      "time": "11:40",
+      "venue": "A",
+      "group": "1",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 4,
+      "date": "2026-02-08",
+      "time": "12:30",
+      "venue": "A",
+      "group": "1",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 5,
+      "date": "2026-02-08",
+      "time": "10:00",
+      "venue": "B",
+      "group": "1",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 6,
+      "date": "2026-02-08",
+      "time": "10:50",
+      "venue": "B",
+      "group": "1",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 7,
+      "date": "2026-02-08",
+      "time": "11:40",
+      "venue": "B",
+      "group": "1",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 8,
+      "date": "2026-02-08",
+      "time": "12:30",
+      "venue": "B",
+      "group": "1",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 9,
+      "date": "2026-02-08",
+      "time": "10:00",
+      "venue": "C",
+      "group": "1",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 10,
+      "date": "2026-02-08",
+      "time": "10:50",
+      "venue": "C",
+      "group": "1",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 11,
+      "date": "2026-02-08",
+      "time": "11:40",
+      "venue": "C",
+      "group": "1",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 12,
+      "date": "2026-02-08",
+      "time": "12:30",
+      "venue": "C",
+      "group": "1",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 13,
+      "date": "2026-02-08",
+      "time": "10:00",
+      "venue": "G",
+      "group": "1",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 14,
+      "date": "2026-02-08",
+      "time": "10:50",
+      "venue": "G",
+      "group": "1",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 15,
+      "date": "2026-02-08",
+      "time": "11:40",
+      "venue": "G",
+      "group": "1",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 16,
+      "date": "2026-02-08",
+      "time": "12:30",
+      "venue": "G",
+      "group": "1",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 17,
+      "date": "2026-02-08",
+      "time": "10:00",
+      "venue": "D",
+      "group": "2",
+      "homeTeamNumber": 3,
+      "awayTeamNumber": 4
+    },
+    {
+      "number": 18,
+      "date": "2026-02-08",
+      "time": "10:50",
+      "venue": "D",
+      "group": "2",
+      "homeTeamNumber": 3,
+      "awayTeamNumber": 4
+    },
+    {
+      "number": 19,
+      "date": "2026-02-08",
+      "time": "11:40",
+      "venue": "D",
+      "group": "2",
+      "homeTeamNumber": 3,
+      "awayTeamNumber": 4
+    },
+    {
+      "number": 20,
+      "date": "2026-02-08",
+      "time": "12:30",
+      "venue": "D",
+      "group": "2",
+      "homeTeamNumber": 3,
+      "awayTeamNumber": 4
+    },
+    {
+      "number": 21,
+      "date": "2026-02-08",
+      "time": "10:00",
+      "venue": "E",
+      "group": "2",
+      "homeTeamNumber": 3,
+      "awayTeamNumber": 4
+    },
+    {
+      "number": 22,
+      "date": "2026-02-08",
+      "time": "10:50",
+      "venue": "E",
+      "group": "2",
+      "homeTeamNumber": 3,
+      "awayTeamNumber": 4
+    },
+    {
+      "number": 23,
+      "date": "2026-02-08",
+      "time": "11:40",
+      "venue": "E",
+      "group": "2",
+      "homeTeamNumber": 3,
+      "awayTeamNumber": 4
+    },
+    {
+      "number": 24,
+      "date": "2026-02-08",
+      "time": "12:30",
+      "venue": "E",
+      "group": "2",
+      "homeTeamNumber": 3,
+      "awayTeamNumber": 4
+    },
+    {
+      "number": 25,
+      "date": "2026-02-08",
+      "time": "10:00",
+      "venue": "F",
+      "group": "2",
+      "homeTeamNumber": 3,
+      "awayTeamNumber": 4
+    },
+    {
+      "number": 26,
+      "date": "2026-02-08",
+      "time": "10:50",
+      "venue": "F",
+      "group": "2",
+      "homeTeamNumber": 3,
+      "awayTeamNumber": 4
+    },
+    {
+      "number": 27,
+      "date": "2026-02-08",
+      "time": "11:40",
+      "venue": "F",
+      "group": "2",
+      "homeTeamNumber": 3,
+      "awayTeamNumber": 4
+    },
+    {
+      "number": 28,
+      "date": "2026-02-08",
+      "time": "12:30",
+      "venue": "F",
+      "group": "2",
+      "homeTeamNumber": 3,
+      "awayTeamNumber": 4
+    },
+    {
+      "number": 29,
+      "date": "2026-02-08",
+      "time": "10:00",
+      "venue": "H",
+      "group": "2",
+      "homeTeamNumber": 3,
+      "awayTeamNumber": 4
+    },
+    {
+      "number": 30,
+      "date": "2026-02-08",
+      "time": "10:50",
+      "venue": "H",
+      "group": "2",
+      "homeTeamNumber": 3,
+      "awayTeamNumber": 4
+    },
+    {
+      "number": 31,
+      "date": "2026-02-08",
+      "time": "11:40",
+      "venue": "H",
+      "group": "2",
+      "homeTeamNumber": 3,
+      "awayTeamNumber": 4
+    },
+    {
+      "number": 32,
+      "date": "2026-02-08",
+      "time": "10:00",
+      "venue": "A",
+      "group": "2",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 33,
+      "date": "2026-02-08",
+      "time": "10:50",
+      "venue": "A",
+      "group": "3",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 34,
+      "date": "2026-02-08",
+      "time": "11:40",
+      "venue": "A",
+      "group": "3",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 35,
+      "date": "2026-02-08",
+      "time": "12:30",
+      "venue": "A",
+      "group": "3",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 36,
+      "date": "2026-02-08",
+      "time": "10:00",
+      "venue": "B",
+      "group": "3",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 37,
+      "date": "2026-02-08",
+      "time": "10:50",
+      "venue": "B",
+      "group": "3",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 38,
+      "date": "2026-02-08",
+      "time": "11:40",
+      "venue": "B",
+      "group": "3",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 39,
+      "date": "2026-02-08",
+      "time": "12:30",
+      "venue": "B",
+      "group": "3",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 40,
+      "date": "2026-02-08",
+      "time": "10:00",
+      "venue": "C",
+      "group": "3",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 41,
+      "date": "2026-02-08",
+      "time": "10:50",
+      "venue": "C",
+      "group": "3",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 42,
+      "date": "2026-02-08",
+      "time": "11:40",
+      "venue": "C",
+      "group": "3",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 43,
+      "date": "2026-02-08",
+      "time": "12:30",
+      "venue": "C",
+      "group": "3",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 44,
+      "date": "2026-02-08",
+      "time": "10:00",
+      "venue": "G",
+      "group": "3",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 45,
+      "date": "2026-02-08",
+      "time": "10:50",
+      "venue": "G",
+      "group": "3",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 46,
+      "date": "2026-02-08",
+      "time": "11:40",
+      "venue": "G",
+      "group": "3",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 2
+    },
+    {
+      "number": 47,
+      "date": "2026-02-08",
+      "time": "12:30",
+      "venue": "G",
+      "group": "3",
+      "homeTeamNumber": 2,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 48,
+      "date": "2026-02-08",
+      "time": "10:00",
+      "venue": "D",
+      "group": "3",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 49,
+      "date": "2026-02-08",
+      "time": "10:50",
+      "venue": "D",
+      "group": "4",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 50,
+      "date": "2026-02-08",
+      "time": "11:40",
+      "venue": "D",
+      "group": "4",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 51,
+      "date": "2026-02-08",
+      "time": "12:30",
+      "venue": "D",
+      "group": "4",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 52,
+      "date": "2026-02-08",
+      "time": "10:00",
+      "venue": "E",
+      "group": "4",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 53,
+      "date": "2026-02-08",
+      "time": "10:50",
+      "venue": "E",
+      "group": "4",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 54,
+      "date": "2026-02-08",
+      "time": "11:40",
+      "venue": "E",
+      "group": "4",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 55,
+      "date": "2026-02-08",
+      "time": "12:30",
+      "venue": "E",
+      "group": "4",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 56,
+      "date": "2026-02-08",
+      "time": "10:00",
+      "venue": "F",
+      "group": "4",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 57,
+      "date": "2026-02-08",
+      "time": "10:50",
+      "venue": "F",
+      "group": "4",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 58,
+      "date": "2026-02-08",
+      "time": "11:40",
+      "venue": "F",
+      "group": "4",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 59,
+      "date": "2026-02-08",
+      "time": "12:30",
+      "venue": "F",
+      "group": "4",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 60,
+      "date": "2026-02-08",
+      "time": "10:00",
+      "venue": "H",
+      "group": "4",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 61,
+      "date": "2026-02-08",
+      "time": "10:50",
+      "venue": "H",
+      "group": "4",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 62,
+      "date": "2026-02-08",
+      "time": "11:40",
+      "venue": "H",
+      "group": "4",
+      "homeTeamNumber": 1,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 63,
+      "date": "2026-02-08",
+      "time": "10:00",
+      "venue": "A",
+      "group": "4",
+      "homeTeamNumber": 2,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 64,
+      "date": "2026-02-08",
+      "time": "10:50",
+      "venue": "A",
+      "group": "4",
+      "homeTeamNumber": 2,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 65,
+      "date": "2026-02-08",
+      "time": "11:40",
+      "venue": "A",
+      "group": "5",
+      "homeTeamNumber": 2,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 66,
+      "date": "2026-02-08",
+      "time": "12:30",
+      "venue": "A",
+      "group": "5",
+      "homeTeamNumber": 2,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 67,
+      "date": "2026-02-08",
+      "time": "10:00",
+      "venue": "B",
+      "group": "5",
+      "homeTeamNumber": 2,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 68,
+      "date": "2026-02-08",
+      "time": "10:50",
+      "venue": "B",
+      "group": "5",
+      "homeTeamNumber": 2,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 69,
+      "date": "2026-02-08",
+      "time": "11:40",
+      "venue": "B",
+      "group": "5",
+      "homeTeamNumber": 2,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 70,
+      "date": "2026-02-08",
+      "time": "12:30",
+      "venue": "B",
+      "group": "5",
+      "homeTeamNumber": 2,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 71,
+      "date": "2026-02-08",
+      "time": "10:00",
+      "venue": "C",
+      "group": "5",
+      "homeTeamNumber": 2,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 72,
+      "date": "2026-02-08",
+      "time": "10:50",
+      "venue": "C",
+      "group": "5",
+      "homeTeamNumber": 2,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 73,
+      "date": "2026-02-08",
+      "time": "11:40",
+      "venue": "C",
+      "group": "5",
+      "homeTeamNumber": 2,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 74,
+      "date": "2026-02-08",
+      "time": "12:30",
+      "venue": "C",
+      "group": "5",
+      "homeTeamNumber": 2,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 75,
+      "date": "2026-02-08",
+      "time": "10:00",
+      "venue": "G",
+      "group": "5",
+      "homeTeamNumber": 2,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 76,
+      "date": "2026-02-08",
+      "time": "10:50",
+      "venue": "G",
+      "group": "5",
+      "homeTeamNumber": 2,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 77,
+      "date": "2026-02-08",
+      "time": "11:40",
+      "venue": "G",
+      "group": "5",
+      "homeTeamNumber": 2,
+      "awayTeamNumber": 3
+    },
+    {
+      "number": 78,
+      "date": "2026-02-08",
+      "time": "12:30",
+      "venue": "G",
+      "group": "5",
+      "homeTeamNumber": 3,
+      "awayTeamNumber": 1
+    },
+    {
+      "number": 79,
+      "date": "2026-02-08",
+      "time": "10:00",
+      "venue": "D",
+      "group": "5",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 1
+    },
+    {
+      "number": 80,
+      "date": "2026-02-08",
+      "time": "10:50",
+      "venue": "D",
+      "group": "5",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 1
+    },
+    {
+      "number": 81,
+      "date": "2026-02-08",
+      "time": "11:40",
+      "venue": "D",
+      "group": "6",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 1
+    },
+    {
+      "number": 82,
+      "date": "2026-02-08",
+      "time": "12:30",
+      "venue": "D",
+      "group": "6",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 1
+    },
+    {
+      "number": 83,
+      "date": "2026-02-08",
+      "time": "10:00",
+      "venue": "E",
+      "group": "6",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 1
+    },
+    {
+      "number": 84,
+      "date": "2026-02-08",
+      "time": "10:50",
+      "venue": "E",
+      "group": "6",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 1
+    },
+    {
+      "number": 85,
+      "date": "2026-02-08",
+      "time": "11:40",
+      "venue": "E",
+      "group": "6",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 1
+    },
+    {
+      "number": 86,
+      "date": "2026-02-08",
+      "time": "12:30",
+      "venue": "E",
+      "group": "6",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 1
+    },
+    {
+      "number": 87,
+      "date": "2026-02-08",
+      "time": "10:00",
+      "venue": "F",
+      "group": "6",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 1
+    },
+    {
+      "number": 88,
+      "date": "2026-02-08",
+      "time": "10:50",
+      "venue": "F",
+      "group": "6",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 1
+    },
+    {
+      "number": 89,
+      "date": "2026-02-08",
+      "time": "11:40",
+      "venue": "F",
+      "group": "6",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 1
+    },
+    {
+      "number": 90,
+      "date": "2026-02-08",
+      "time": "12:30",
+      "venue": "F",
+      "group": "6",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 1
+    },
+    {
+      "number": 91,
+      "date": "2026-02-08",
+      "time": "10:00",
+      "venue": "H",
+      "group": "6",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 1
+    },
+    {
+      "number": 92,
+      "date": "2026-02-08",
+      "time": "10:50",
+      "venue": "H",
+      "group": "6",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 1
+    },
+    {
+      "number": 93,
+      "date": "2026-02-08",
+      "time": "11:40",
+      "venue": "H",
+      "group": "6",
+      "homeTeamNumber": 4,
+      "awayTeamNumber": 1
+    }
+  ]
+}
