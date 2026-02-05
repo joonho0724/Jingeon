@@ -169,10 +169,12 @@ async function matchSingleMatch(
     [homeScore, awayScore] = [awayScore, homeScore];
   }
 
-  console.log(`[매칭 성공] 경기 ID: ${matchedMatch.id}, DB 경기번호: ${matchedMatch.match_no || 'N/A'}, 크롤링 경기번호: ${crawledMatch.matchNumber || 'N/A'}, 점수: ${homeScore} : ${awayScore}`);
-  
+  console.log(
+    `[매칭 성공] 경기 ID: ${matchedMatch.id}, DB 경기번호: ${matchedMatch.match_no || 'N/A'}, 크롤링 경기번호: ${crawledMatch.matchNumber || 'N/A'}, 점수: ${homeScore} : ${awayScore}`,
+  );
+
   // 경기번호가 크롤링 데이터에 있지만 DB에 없으면 업데이트 필요 (나중에 업데이트 단계에서 처리)
-  const needsMatchNoUpdate = crawledMatch.matchNumber && !matchedMatch.match_no;
+  const needsMatchNoUpdate = !!crawledMatch.matchNumber && !matchedMatch.match_no;
 
   return {
     crawledMatch: {

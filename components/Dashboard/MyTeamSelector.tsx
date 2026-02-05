@@ -21,10 +21,10 @@ export default function MyTeamSelector({
   const sortedTeams = useMemo(() => {
     return [...teams].sort((a, b) => {
       if (a.age_group !== b.age_group) return a.age_group.localeCompare(b.age_group);
-      const ga = Number(a.group_name);
-      const gb = Number(b.group_name);
+      const ga = Number(a.group_name1);
+      const gb = Number(b.group_name1);
       if (!Number.isNaN(ga) && !Number.isNaN(gb) && ga !== gb) return ga - gb;
-      if (a.group_name !== b.group_name) return a.group_name.localeCompare(b.group_name);
+      if (a.group_name1 !== b.group_name1) return a.group_name1.localeCompare(b.group_name1);
       return a.name.localeCompare(b.name);
     });
   }, [teams]);
@@ -35,10 +35,10 @@ export default function MyTeamSelector({
     return sortedTeams.filter((t) => {
       return (
         t.name.toLowerCase().includes(q) ||
-        t.group_name.toLowerCase().includes(q) ||
+        (t.group_name1 ?? '').toLowerCase().includes(q) ||
         t.age_group.toLowerCase().includes(q) ||
         String(t.registration_no ?? '').includes(q) ||
-        String(t.group_team_no ?? '').includes(q)
+        String(t.group_team_no1 ?? '').includes(q)
       );
     });
   }, [query, sortedTeams]);
@@ -84,7 +84,7 @@ export default function MyTeamSelector({
               <>
                 <span className="font-medium text-gray-900">{currentTeam.name}</span>
                 <span className="ml-2 text-gray-600">
-                  ({currentTeam.age_group} · {currentTeam.group_name}조)
+                  ({currentTeam.age_group} · {currentTeam.group_name1}조)
                 </span>
                 <Link
                   href={`/teams/${currentTeam.id}`}
@@ -131,8 +131,8 @@ export default function MyTeamSelector({
           <option value="">팀 선택...</option>
           {filteredTeams.map((t) => (
             <option key={t.id} value={t.id}>
-              {t.name} ({t.age_group} · {t.group_name}조
-              {t.group_team_no ? ` · ${t.group_team_no}번` : ''}
+              {t.name} ({t.age_group} · {t.group_name1}조
+              {t.group_team_no1 ? ` · ${t.group_team_no1}번` : ''}
               {t.registration_no ? ` · 전체 ${t.registration_no}번` : ''})
             </option>
           ))}

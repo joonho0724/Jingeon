@@ -22,17 +22,20 @@ export default function BulkUploadForm({ teams, venues }: BulkUploadFormProps) {
   // 팀명으로 팀 ID 찾기
   const findTeamId = (teamName: string, ageGroup?: 'U11' | 'U12', groupName?: string): string | null => {
     // 정확한 이름 매칭
-    let found = teams.find(t => t.name === teamName);
-    
-    // 연령대와 조로 필터링
+    let found = teams.find((t) => t.name === teamName);
+
+    // 연령대로 1차 필터링
     if (!found && ageGroup) {
-      found = teams.find(t => t.name === teamName && t.age_group === ageGroup);
+      found = teams.find((t) => t.name === teamName && t.age_group === ageGroup);
     }
-    
+
+    // 연령대 + 1차 리그 조(group_name1)까지 일치하는 팀 찾기
     if (!found && ageGroup && groupName) {
-      found = teams.find(t => t.name === teamName && t.age_group === ageGroup && t.group_name === groupName);
+      found = teams.find(
+        (t) => t.name === teamName && t.age_group === ageGroup && t.group_name1 === groupName,
+      );
     }
-    
+
     return found?.id || null;
   };
 
@@ -227,8 +230,8 @@ export default function BulkUploadForm({ teams, venues }: BulkUploadFormProps) {
   const handleDownloadTemplate = () => {
     // 팀 목록 시트
     const teamsByAge = {
-      'U11': teams.filter(t => t.age_group === 'U11'),
-      'U12': teams.filter(t => t.age_group === 'U12'),
+      U11: teams.filter((t) => t.age_group === 'U11'),
+      U12: teams.filter((t) => t.age_group === 'U12'),
     };
 
     const venuesData = [
@@ -263,7 +266,7 @@ export default function BulkUploadForm({ teams, venues }: BulkUploadFormProps) {
     // 팀 목록 시트 (U11)
     const u11TeamsData = [
       ['연령대', '조', '팀명'],
-      ...teamsByAge['U11'].map(t => [t.age_group, t.group_name, t.name]),
+      ...teamsByAge.U11.map((t) => [t.age_group, t.group_name1, t.name]),
     ];
     const u11Sheet = XLSX.utils.aoa_to_sheet(u11TeamsData);
     XLSX.utils.book_append_sheet(workbook, u11Sheet, 'U11 팀 목록');
@@ -271,7 +274,7 @@ export default function BulkUploadForm({ teams, venues }: BulkUploadFormProps) {
     // 팀 목록 시트 (U12)
     const u12TeamsData = [
       ['연령대', '조', '팀명'],
-      ...teamsByAge['U12'].map(t => [t.age_group, t.group_name, t.name]),
+      ...teamsByAge.U12.map((t) => [t.age_group, t.group_name1, t.name]),
     ];
     const u12Sheet = XLSX.utils.aoa_to_sheet(u12TeamsData);
     XLSX.utils.book_append_sheet(workbook, u12Sheet, 'U12 팀 목록');

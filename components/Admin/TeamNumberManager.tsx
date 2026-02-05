@@ -67,7 +67,8 @@ export default function TeamNumberManager({
 
     teams.forEach((t) => {
       const age = t.age_group;
-      const groupName = selectedRound === '1차' ? t.group_name : t.group_name_2nd || '';
+      // 1차 리그는 teams.group_name1, 2차 리그는 계산된 group_name_2nd 사용
+      const groupName = selectedRound === '1차' ? t.group_name1 : t.group_name_2nd || '';
       if (!groupName) return; // 2차 리그에서 조 정보가 없는 팀은 제외
 
       if (!byAge[age][groupName]) byAge[age][groupName] = [];
@@ -77,8 +78,8 @@ export default function TeamNumberManager({
     (Object.keys(byAge) as Array<'U11' | 'U12'>).forEach((age) => {
       Object.keys(byAge[age]).forEach((g) => {
         byAge[age][g].sort((a, b) => {
-          const aNo = selectedRound === '1차' ? a.group_team_no ?? 999 : a.group_team_no_2nd ?? 999;
-          const bNo = selectedRound === '1차' ? b.group_team_no ?? 999 : b.group_team_no_2nd ?? 999;
+          const aNo = selectedRound === '1차' ? a.group_team_no1 ?? 999 : a.group_team_no_2nd ?? 999;
+          const bNo = selectedRound === '1차' ? b.group_team_no1 ?? 999 : b.group_team_no_2nd ?? 999;
           if (aNo !== bNo) return aNo - bNo;
           return a.name.localeCompare(b.name);
         });
@@ -98,12 +99,12 @@ export default function TeamNumberManager({
 
     try {
       if (selectedRound === '1차') {
-        // 1차 리그: teams 테이블 업데이트
+        // 1차 리그: teams 테이블 업데이트 (group_name1 / group_team_no1 사용)
         const updates = teams.map((t) => ({
           id: t.id,
           registration_no: t.registration_no,
-          group_name: t.group_name,
-          group_team_no: t.group_team_no,
+          group_name1: t.group_name1,
+          group_team_no1: t.group_team_no1,
         }));
 
         const results = await Promise.all(
@@ -112,8 +113,8 @@ export default function TeamNumberManager({
               .from('teams')
               .update({
                 registration_no: u.registration_no,
-                group_name: u.group_name,
-                group_team_no: u.group_team_no,
+                group_name1: u.group_name1,
+                group_team_no1: u.group_team_no1,
               })
               .eq('id', u.id)
           )
@@ -330,10 +331,10 @@ export default function TeamNumberManager({
                                       type="number"
                                       min={1}
                                       max={16}
-                                      value={t.group_name ?? ''}
+                                      value={t.group_name1 ?? ''}
                                       onChange={(e) =>
                                         setTeamField(t.id, {
-                                          group_name: e.target.value,
+                                          group_name1: e.target.value,
                                         })
                                       }
                                       className="w-20 px-2 py-1 border border-gray-300 rounded-md"
@@ -342,27 +343,27 @@ export default function TeamNumberManager({
                                   </td>
                                 )}
                                 <td className="px-3 py-2">
-                                  <input
-                                    type="number"
-                                    min={1}
-                                    max={4}
-                                    value={
-                                      selectedRound === '1차' ? t.group_team_no ?? '' : t.group_team_no_2nd ?? ''
-                                    }
-                                    onChange={(e) => {
-                                      if (selectedRound === '1차') {
-                                        setTeamField(t.id, {
-                                          group_team_no: e.target.value === '' ? null : Number(e.target.value),
-                                        });
-                                      } else {
-                                        setTeamField(t.id, {
-                                          group_team_no_2nd: e.target.value === '' ? null : Number(e.target.value),
-                                        });
+                                    <input
+                                      type="number"
+                                      min={1}
+                                      max={4}
+                                      value={
+                                        selectedRound === '1차' ? t.group_team_no1 ?? '' : t.group_team_no_2nd ?? ''
                                       }
-                                    }}
-                                    className="w-24 px-2 py-1 border border-gray-300 rounded-md"
-                                    placeholder="1~4"
-                                  />
+                                      onChange={(e) => {
+                                        if (selectedRound === '1차') {
+                                          setTeamField(t.id, {
+                                            group_team_no1: e.target.value === '' ? null : Number(e.target.value),
+                                          });
+                                        } else {
+                                          setTeamField(t.id, {
+                                            group_team_no_2nd: e.target.value === '' ? null : Number(e.target.value),
+                                          });
+                                        }
+                                      }}
+                                      className="w-24 px-2 py-1 border border-gray-300 rounded-md"
+                                      placeholder="1~4"
+                                    />
                                 </td>
                                 {selectedRound === '2차' && (
                                   <td className="px-3 py-2">

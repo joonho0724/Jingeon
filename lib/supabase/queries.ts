@@ -332,7 +332,7 @@ export async function getStandings(
   } else {
     // 2차 리그: matches 테이블에서 해당 조의 경기에 참가한 팀들을 추출
     const teamIds = new Set<string>();
-    matchData.forEach((match) => {
+    (matchData || []).forEach((match: any) => {
       teamIds.add(match.home_team_id);
       teamIds.add(match.away_team_id);
     });
@@ -415,7 +415,7 @@ export async function getStandings(
     });
   });
 
-  matchData.forEach((match) => {
+  (matchData as Match[]).forEach((match) => {
     if (match.home_score === null || match.away_score === null) return;
 
     // 중복 팀 ID를 대표 팀 ID로 변환
@@ -460,7 +460,7 @@ export async function getStandings(
     .select('*');
 
   if (fairPlayData) {
-    fairPlayData.forEach((point) => {
+    (fairPlayData as FairPlayPoint[]).forEach((point) => {
       const standing = standingsMap.get(point.team_id);
       if (standing) {
         standing.fair_play_points += point.points;
