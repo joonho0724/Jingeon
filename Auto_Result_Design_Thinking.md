@@ -483,7 +483,7 @@ interface MatchResult {
 
 ## 10. 구현 우선순위
 
-### High Priority (필수)
+### High Priority (필수) ✅ 완료
 
 1. ✅ 페이지 구조 분석
 2. ✅ 크롤링 로직 구현 (기본)
@@ -491,13 +491,13 @@ interface MatchResult {
 4. ✅ 관리자 UI 구현 (기본)
 5. ✅ 데이터 매칭 로직 (기본)
 
-### Medium Priority (중요)
+### Medium Priority (중요) ✅ 부분 완료
 
-1. ⚠️ 에러 처리 강화
-2. ⚠️ 매칭 실패 처리 개선
-3. ⚠️ 로깅 및 모니터링
+1. ✅ 에러 처리 강화 (기본 구현 완료)
+2. ✅ 매칭 실패 처리 개선 (경기번호 우선 매칭, 실패 목록 제공)
+3. ✅ 로깅 및 모니터링 (기본 구현 완료)
 
-### Low Priority (선택)
+### Low Priority (선택) 🔄 향후 개선
 
 1. ⚪ 스케줄링 기능
 2. ⚪ 다중 대회 지원
@@ -517,14 +517,62 @@ interface MatchResult {
 ## 12. 문서 정보
 
 **📅 문서 작성일**: 2026-01-31  
-**🔄 최종 업데이트**: 2026-01-31  
-**📝 현재 버전**: v1.0.0  
+**🔄 최종 업데이트**: 2026-02-01  
+**📝 현재 버전**: v1.1.0  
 **✍️ 작성자**: AI Assistant (Claude Sonnet 4.5)  
 **🛠️ 개발 도구**: Cursor IDE, Sequential Thinking
 
 ---
 
 ## 13. 변경 이력
+
+### v1.1.0 (2026-02-01)
+**작성일시**: 2026-02-01  
+**🔄 주요 변경사항**:
+- ✅ 경기 결과 자동 수집 기능 재구현 완료
+  - joinkfa.com에서 경기 결과 자동 크롤링 기능 구현 완료
+  - Playwright 기반 브라우저 자동화 및 Network API 응답 가로채기 방식 채택
+  - 고정 대회 ID 기반 크롤링 (U11, U12)
+  - 경기번호 우선 매칭 로직 구현 (경기번호 → 팀명+날짜+시간)
+  - 크롤링 결과를 DB에 자동 업데이트
+  - 관리자 UI (`/admin/crawl-results`) 구현 완료
+- ✅ 핵심 구현 내용
+  - **크롤링 로직** (`lib/crawl/joinkfa.ts`):
+    - Playwright 브라우저 자동화
+    - Network API 응답 가로채기 (`getMatchList.do`, `getInitData` 등)
+    - 직접 URL 접근 방식 지원
+    - 고정 대회 ID 사용으로 필터 UI 자동화 복잡도 감소
+  - **API 직접 호출** (`lib/crawl/api.ts`):
+    - `getTournamentList`: 대회 목록 조회
+    - `getMatchResults`: 경기 결과 조회
+    - `convertMatchResultToCrawledMatch`: API 응답을 크롤링 데이터 형식으로 변환
+  - **매칭 로직** (`lib/crawl/match.ts`):
+    - 경기번호 우선 매칭 (가장 정확)
+    - 팀명+날짜+시간 기반 매칭 (경기번호 없을 때)
+    - 경기번호 자동 업데이트 기능
+    - 매칭 실패 원인 상세 기록
+  - **API 라우트** (`app/api/crawl/results/route.ts`):
+    - 관리자 인증 확인
+    - 크롤링 실행 → 매칭 → DB 업데이트 전체 플로우
+    - 통계 및 에러 정보 반환
+  - **관리자 UI** (`app/admin/crawl-results/page.tsx`, `components/Crawl/CrawlResultsForm.tsx`):
+    - 크롤링 실행 버튼
+    - 진행 상황 표시
+    - 결과 요약 (수집된 경기 수, 업데이트된 경기 수, 실패한 경기 수)
+    - 실패한 경기 목록 테이블
+    - 에러 로그 표시
+- ✅ 주요 개선 사항
+  - Network API 응답 가로채기 방식으로 DOM 파싱보다 안정적
+  - 경기번호 기반 매칭으로 정확도 향상
+  - 고정 대회 ID 사용으로 필터 UI 자동화 복잡도 감소
+  - 경기번호 자동 업데이트로 DB 데이터 정합성 향상
+  - 매칭 실패 경기 목록 제공으로 수동 확인 용이
+
+**📝 기술적 결정 사항**:
+- Playwright를 사용한 브라우저 자동화로 SPA 구조 대응
+- Network API 응답 가로채기 방식으로 데이터 추출 (DOM 파싱보다 안정적)
+- 경기번호를 우선 매칭 키로 사용하여 정확도 향상
+- 고정 대회 ID 사용으로 필터 UI 자동화 복잡도 감소
 
 ### v1.0.0 (2026-01-31)
 - 초기 기획 문서 작성

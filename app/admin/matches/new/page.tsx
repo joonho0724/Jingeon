@@ -13,7 +13,7 @@ export default async function NewMatchPage() {
     <ProtectedRoute requireAdmin>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex items-center justify-between mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">경기 일정 등록</h1>
+          <h1 className="text-3xl font-bold text-gray-900">경기일정 등록</h1>
           <Link
             href="/admin"
             className="text-sm text-gray-600 hover:text-gray-800 border border-gray-300 px-3 py-1.5 rounded-md bg-white"

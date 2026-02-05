@@ -1,9 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import { getUser, isAdmin } from '@/lib/auth';
 import { crawlJoinkfaResults } from '@/lib/crawl/joinkfa';
 import { matchCrawledResults } from '@/lib/crawl/match';
 import { updateMatchResult } from '@/lib/supabase/queries';
 import { getTournamentList } from '@/lib/crawl/api';
+import { updateTeamsFromCrawledMatches } from '@/lib/crawl/teams';
+import { updateMatchNumbersFromCrawledMatches } from '@/lib/crawl/match-numbers';
 
 /**
  * 고정 대회 ID (2026 서귀포 칠십리 춘계 유소년 축구 페스티벌)
@@ -96,6 +99,22 @@ export async function POST(request: NextRequest) {
       })));
     }
 
+    // 1.5. 팀 정보 업데이트 (크롤링 결과에서 팀 정보 추출하여 teams 테이블 업데이트)
+    console.log('[API] 팀 정보 업데이트 시작...');
+    const teamUpdateResult = await updateTeamsFromCrawledMatches(crawlResult.matches);
+    console.log(`[API] 팀 정보 업데이트 완료: ${teamUpdateResult.updated}개 업데이트, ${teamUpdateResult.created}개 생성, ${teamUpdateResult.errors.length}개 오류`);
+    if (teamUpdateResult.errors.length > 0) {
+      console.log(`[API] 팀 업데이트 오류:`, teamUpdateResult.errors);
+    }
+
+    // 1.6. 경기번호 업데이트 (match_no가 null인 경기들에 경기번호 업데이트)
+    console.log('[API] 경기번호 업데이트 시작 (match_no가 null인 경기)...');
+    const matchNumberUpdateResult = await updateMatchNumbersFromCrawledMatches(crawlResult.matches);
+    console.log(`[API] 경기번호 업데이트 완료: ${matchNumberUpdateResult.updated}개 업데이트, ${matchNumberUpdateResult.failed}개 실패`);
+    if (matchNumberUpdateResult.errors.length > 0) {
+      console.log(`[API] 경기번호 업데이트 오류:`, matchNumberUpdateResult.errors);
+    }
+
     // 2. 데이터 매칭
     const matchResults = await matchCrawledResults(crawlResult.matches);
 
@@ -105,14 +124,30 @@ export async function POST(request: NextRequest) {
 
     // 3. DB 업데이트
     const updatedMatches: string[] = [];
+    const skippedMatches: string[] = []; // 이미 점수가 있는 경기 (스킵)
     const failedMatches: Array<{
       match: any;
       reason: string;
     }> = [];
 
+    // 기존 경기 데이터 조회 (점수 확인용)
+    const { getMatches } = await import('@/lib/supabase/queries');
+    const existingMatches = await getMatches();
+    const existingMatchesMap = new Map(existingMatches.map(m => [m.id, m]));
+
     for (const matchResult of matchResults) {
       if (matchResult.matchStatus === 'matched' && matchResult.matchedMatchId) {
         try {
+          const existingMatch = existingMatchesMap.get(matchResult.matchedMatchId);
+          
+          // 이미 점수가 있고 상태가 '종료'인 경우 스킵 (선택적)
+          // 주석 처리: 항상 업데이트하도록 변경
+          // if (existingMatch?.home_score !== null && existingMatch?.away_score !== null && existingMatch?.status === '종료') {
+          //   skippedMatches.push(matchResult.matchedMatchId);
+          //   console.log(`[API] 경기 스킵 (이미 결과 있음): ${matchResult.crawledMatch.homeTeam} vs ${matchResult.crawledMatch.awayTeam}`);
+          //   continue;
+          // }
+
           const updateData: {
             home_score: number;
             away_score: number;
@@ -124,11 +159,25 @@ export async function POST(request: NextRequest) {
             status: '종료',
           };
           
-          // 경기번호가 있으면 항상 업데이트 (DB에 없거나 다른 경우 대비)
+          // 경기번호가 있으면 항상 업데이트 (DB에 null이거나 다른 경우 대비)
           if (matchResult.crawledMatch.matchNumber) {
+            const currentMatchNo = existingMatch?.match_no;
             updateData.match_no = matchResult.crawledMatch.matchNumber;
-            if (matchResult.needsMatchNoUpdate) {
-              console.log(`[API] 경기번호 업데이트: ${matchResult.matchedMatchId}에 경기번호 ${matchResult.crawledMatch.matchNumber} 저장`);
+            
+            // 경기번호 업데이트 로그 (null이거나 다른 경우)
+            if (currentMatchNo === null || currentMatchNo === undefined) {
+              console.log(`[API] 경기번호 업데이트 (null → ${matchResult.crawledMatch.matchNumber}): ${matchResult.matchedMatchId}, ${matchResult.crawledMatch.homeTeam} vs ${matchResult.crawledMatch.awayTeam}`);
+            } else if (currentMatchNo !== matchResult.crawledMatch.matchNumber) {
+              console.log(`[API] 경기번호 업데이트 (${currentMatchNo} → ${matchResult.crawledMatch.matchNumber}): ${matchResult.matchedMatchId}, ${matchResult.crawledMatch.homeTeam} vs ${matchResult.crawledMatch.awayTeam}`);
+            }
+          }
+
+          // 업데이트 전 로그
+          if (existingMatch) {
+            const scoreChanged = existingMatch.home_score !== updateData.home_score || 
+                                 existingMatch.away_score !== updateData.away_score;
+            if (scoreChanged) {
+              console.log(`[API] 점수 변경: ${existingMatch.home_score || 'N/A'}:${existingMatch.away_score || 'N/A'} → ${updateData.home_score}:${updateData.away_score}`);
             }
           }
 
@@ -160,15 +209,44 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    console.log(`[API] 업데이트 완료: ${updatedMatches.length}개 성공, ${failedMatches.length}개 실패`);
+    console.log(`[API] 업데이트 완료: ${updatedMatches.length}개 성공, ${skippedMatches.length}개 스킵, ${failedMatches.length}개 실패`);
+
+    // 크롤링 완료 후 관련 페이지 캐시 무효화 (즉시 업데이트 반영)
+    if (updatedMatches.length > 0) {
+      revalidatePath('/dashboard');
+      revalidatePath('/matches');
+      revalidatePath('/standings');
+      console.log('[API] 페이지 캐시 무효화 완료: /dashboard, /matches, /standings');
+    }
 
     return NextResponse.json({
       success: true,
       totalMatches: crawlResult.matches.length,
       updatedMatches: updatedMatches.length,
+      skippedMatches: skippedMatches.length,
       failedMatches: failedMatches.length,
       failedMatchesList: failedMatches,
       errors: crawlResult.errors,
+      teamUpdate: {
+        updated: teamUpdateResult.updated,
+        created: teamUpdateResult.created,
+        errors: teamUpdateResult.errors,
+      },
+      matchNumberUpdate: {
+        updated: matchNumberUpdateResult.updated,
+        failed: matchNumberUpdateResult.failed,
+        errors: matchNumberUpdateResult.errors,
+      },
+      summary: {
+        crawled: crawlResult.matches.length,
+        matched: matchResults.filter(r => r.matchStatus === 'matched').length,
+        updated: updatedMatches.length,
+        skipped: skippedMatches.length,
+        failed: failedMatches.length,
+        teamsUpdated: teamUpdateResult.updated,
+        teamsCreated: teamUpdateResult.created,
+        matchNumbersUpdated: matchNumberUpdateResult.updated,
+      },
     });
   } catch (error: any) {
     console.error('[API] 크롤링 API 오류:', error);

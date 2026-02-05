@@ -3,6 +3,9 @@ import MatchCard from '@/components/Dashboard/MatchCard';
 import AgeGroupTabs from '@/components/Matches/AgeGroupTabs';
 import type { MatchWithTeams } from '@/types/database';
 
+// 캐시 무효화 설정: 크롤링 후 즉시 업데이트 반영
+export const revalidate = 0;
+
 export default async function MatchesPage({
   searchParams,
 }: {
@@ -86,7 +89,7 @@ export default async function MatchesPage({
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <h1 className="text-3xl font-bold text-gray-900 mb-8">경기 일정</h1>
+      <h1 className="text-3xl font-bold text-gray-900 mb-8">경기일정</h1>
 
       <AgeGroupTabs currentAgeGroup={selectedAgeGroup} />
 

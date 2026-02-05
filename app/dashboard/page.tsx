@@ -7,7 +7,10 @@ import CurrentDateTime from '@/components/Dashboard/CurrentDateTime';
 import { Wind, Droplets, CloudRain, Gauge } from 'lucide-react';
 import Link from 'next/link';
 
-const FIXED_MY_TEAM_NAMES = ['진건초', 'FC진건', 'FC진건레드', 'FC진건블루'] as const;
+const FIXED_MY_TEAM_NAMES = ['경기진건초', '경기FC진건', '경기FC진건레드', '경기FC진건블루'] as const;
+
+// 캐시 무효화 설정: 크롤링 후 즉시 업데이트 반영
+export const revalidate = 0;
 
 // 풍향을 방위로 변환
 function getWindDirection(degrees: number): string {
@@ -169,11 +172,9 @@ export default async function DashboardPage() {
       <section className="mb-10">
         <div className="flex items-end justify-between gap-4 mb-4">
           <div>
-            <h2 className="text-2xl font-semibold text-gray-800">팀 별 일정</h2>
+            <h2 className="text-2xl font-semibold text-gray-800">진건초등학교 일정</h2>
             <p className="text-sm text-gray-600 mt-1">
-              <span className="font-medium text-gray-900">진건초등학교</span>
-              <br />
-              We are Jingeonies.
+              <span className="font-medium text-gray-900">Jingeon Elementary School</span>
             </p>
           </div>
           <Link href="/teams" className="text-blue-600 hover:text-blue-700 text-sm font-medium">
@@ -196,7 +197,7 @@ export default async function DashboardPage() {
               );
 
               const firstRoundGroupName =
-                teamMatches.find((m) => m.round === '1차')?.group_name || team.group_name;
+                teamMatches.find((m) => m.round === '1차')?.group_name || team.group_name1;
 
               const secondRoundGroupName =
                 teamMatches.find((m) => m.round === '2차')?.group_name || null;

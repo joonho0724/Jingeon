@@ -1,0 +1,117 @@
+-- ⚠️ DEV/MAINTENANCE ONLY
+-- 이 마이그레이션은 특정 시점의 데이터에 맞춰 팀 번호를 수정하기 위한 일회성 스크립트입니다.
+-- 새 데이터베이스를 만들 때 다시 실행하면 안 됩니다.
+
+-- 팀 번호 업데이트를 위한 SQL 예제
+-- 이 파일은 참고용이며, 실제 팀 번호는 아래 SQL문을 수정하여 사용하세요.
+
+-- ============================================
+-- 1. 특정 팀의 팀 번호 업데이트 (예시)
+-- ============================================
+-- UPDATE teams 
+-- SET group_team_no1 = 1  -- 조 내 팀 번호 (1~4)
+-- WHERE name = '팀명' 
+--   AND age_group = 'U11'  -- 또는 'U12'
+--   AND group_name1 = 'A';  -- 조 이름
+
+-- ============================================
+-- 2. 여러 팀의 팀 번호 일괄 업데이트 (예시)
+-- ============================================
+-- UPDATE teams 
+-- SET group_team_no1 = CASE 
+--   WHEN name = '팀1' AND age_group = 'U11' AND group_name1 = 'A' THEN 1
+--   WHEN name = '팀2' AND age_group = 'U11' AND group_name1 = 'A' THEN 2
+--   WHEN name = '팀3' AND age_group = 'U11' AND group_name1 = 'A' THEN 3
+--   WHEN name = '팀4' AND age_group = 'U11' AND group_name1 = 'A' THEN 4
+--   ELSE group_team_no1  -- 변경하지 않음
+-- END
+-- WHERE (name = '팀1' OR name = '팀2' OR name = '팀3' OR name = '팀4')
+--   AND age_group = 'U11'
+--   AND group_name1 = 'A';
+
+-- ============================================
+-- 3. 조별로 팀 번호 업데이트 (예시: U11 A조)
+-- ============================================
+-- UPDATE teams 
+-- SET group_team_no1 = CASE 
+--   WHEN name = '제주제주서초' THEN 1
+--   WHEN name = '서울K리거강용FCB' THEN 2
+--   WHEN name = '제주SKU12' THEN 3
+--   WHEN name = '서울신용산초' THEN 4
+--   ELSE group_team_no1
+-- END
+-- WHERE age_group = 'U11' 
+--   AND group_name1 = 'A'
+--   AND (name IN ('제주제주서초', '서울K리거강용FCB', '제주SKU12', '서울신용산초'));
+
+-- ============================================
+-- 4. 모든 팀의 팀 번호 확인 (조회)
+-- ============================================
+-- SELECT 
+--   name,
+--   age_group,
+--   group_name1,
+--   group_team_no1,
+--   registration_no
+-- FROM teams
+-- ORDER BY age_group, group_name1, group_team_no1 NULLS LAST, name;
+
+-- ============================================
+-- 5. 특정 조의 팀 목록 확인
+-- ============================================
+-- SELECT 
+--   name,
+--   age_group,
+--   group_name1,
+--   group_team_no1
+-- FROM teams
+-- WHERE age_group = 'U11'  -- 또는 'U12'
+--   AND group_name1 = 'A'  -- 조 이름
+-- ORDER BY group_team_no1 NULLS LAST, name;
+
+-- ============================================
+-- 6. 팀 번호가 없는 팀 확인
+-- ============================================
+-- SELECT 
+--   name,
+--   age_group,
+--   group_name1,
+--   group_team_no1
+-- FROM teams
+-- WHERE group_team_no1 IS NULL
+-- ORDER BY age_group, group_name1, name;
+
+-- ============================================
+-- 7. 팀 번호 초기화 (모든 팀 번호를 NULL로)
+-- ============================================
+-- UPDATE teams 
+-- SET group_team_no1 = NULL;
+
+-- ============================================
+-- 8. CSV 형식으로 팀 번호 업데이트 (예시)
+-- ============================================
+-- 먼저 임시 테이블 생성
+-- CREATE TEMP TABLE team_numbers_temp (
+--   team_name TEXT,
+--   age_group TEXT,
+--   group_name TEXT,
+--   team_no INTEGER
+-- );
+-- 
+-- -- CSV 데이터 삽입 (예시)
+-- INSERT INTO team_numbers_temp (team_name, age_group, group_name, team_no) VALUES
+--   ('팀1', 'U11', 'A', 1),
+--   ('팀2', 'U11', 'A', 2),
+--   ('팀3', 'U11', 'A', 3),
+--   ('팀4', 'U11', 'A', 4);
+-- 
+-- -- 팀 번호 업데이트
+-- UPDATE teams t
+-- SET group_team_no1 = tn.team_no
+-- FROM team_numbers_temp tn
+-- WHERE t.name = tn.team_name
+--   AND t.age_group = tn.age_group
+--   AND t.group_name1 = tn.group_name;
+-- 
+-- -- 임시 테이블 삭제
+-- DROP TABLE team_numbers_temp;

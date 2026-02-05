@@ -2,7 +2,7 @@ import VenueMap from '@/components/Venues/VenueMap';
 import VenueList from '@/components/Venues/VenueList';
 
 export const metadata = {
-  title: '경기장 정보 | Festival',
+  title: '경기장 정보 | 2026 서귀포 칠십리 춘계 유소년 축구 페스티벌',
   description: '대회 경기장 위치 및 정보',
 };
 

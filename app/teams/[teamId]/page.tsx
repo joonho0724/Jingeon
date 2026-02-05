@@ -65,7 +65,7 @@ export default async function TeamPage({
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">{team.name}</h1>
         <p className="text-gray-600">
-          {team.age_group} - {team.group_name}조
+          {team.age_group} - {team.group_name1}조
         </p>
       </div>
 

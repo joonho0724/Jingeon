@@ -62,9 +62,8 @@ export default function Header() {
                 style={{ width: 'auto', height: 'auto' }}
                 priority
               />
-              {/* 진건초_2026 서귀포 칠십리 유소년 축구 페스티벌 */}
               <span className="text-lg sm:text-xl font-bold text-gray-900">
-                Festival
+                2026 서귀포 칠십리 춘계 유소년 축구 페스티벌
               </span>
             </Link>
           </div>
@@ -81,13 +80,13 @@ export default function Header() {
               href="/matches"
               className="text-gray-700 hover:text-gray-900 px-2 lg:px-3 py-2 rounded-md text-sm font-medium"
             >
-              경기 일정
+              경기일정
             </Link>
             <Link
               href="/standings"
               className="text-gray-700 hover:text-gray-900 px-2 lg:px-3 py-2 rounded-md text-sm font-medium"
             >
-              순위표
+              대회결과
             </Link>
             <Link
               href="/rules"

@@ -2,9 +2,10 @@ export type Team = {
   id: string;
   name: string;
   age_group: 'U11' | 'U12';
-  group_name: string;
+  group_name1: string; // 1차 리그 조
+  group_name2: string | null; // 2차 리그 조 (나중에 업데이트)
   registration_no: number | null; // 대회 전체 팀 번호(예: 1~56)
-  group_team_no: number | null; // 조 내 팀 번호(예: 1~4)
+  group_team_no1: number | null; // 1차 리그 조 내 팀 번호(예: 1~4)
   created_at: string;
   updated_at: string;
 };

@@ -5,6 +5,9 @@ import Link from 'next/link';
 import AgeGroupTabs from '@/components/Standings/AgeGroupTabs';
 import type { Standing } from '@/types/database';
 
+// 캐시 무효화 설정: 크롤링 후 즉시 업데이트 반영
+export const revalidate = 0;
+
 export default async function StandingsPage({
   searchParams,
 }: {
@@ -29,7 +32,10 @@ export default async function StandingsPage({
   
   teams.forEach(team => {
     if (groupsByAge[team.age_group]) {
-      groupsByAge[team.age_group].add(team.group_name);
+      // 1차 리그는 group_name1 사용
+      if (team.group_name1) {
+        groupsByAge[team.age_group].add(team.group_name1);
+      }
     }
   });
   
@@ -47,7 +53,7 @@ export default async function StandingsPage({
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <h1 className="text-3xl font-bold text-gray-900 mb-8">조별 순위</h1>
+      <h1 className="text-3xl font-bold text-gray-900 mb-8">대회결과</h1>
 
       <AgeGroupTabs currentAgeGroup={selectedAgeGroup} />
 

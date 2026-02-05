@@ -197,6 +197,15 @@ Next.js (App Router)
 - 네트워크 지연 시간 보정
 - PC 시간과 서버 시간 차이 해결
 
+### 9단계: 경기 결과 자동 수집 기능 재구현 (2026-02-01)
+- joinkfa.com에서 경기 결과 자동 크롤링 기능 구현
+- Playwright 기반 브라우저 자동화 및 Network API 응답 가로채기
+- 고정 대회 ID 기반 크롤링 (U11, U12)
+- 경기번호 우선 매칭 로직 (경기번호 → 팀명+날짜+시간)
+- 크롤링 결과를 DB에 자동 업데이트
+- 관리자 UI (`/admin/crawl-results`) 구현
+- 크롤링 실행 및 결과 확인 기능
+
 ---
 
 ## ✨ 핵심 기능
@@ -228,6 +237,7 @@ Next.js (App Router)
 - 경기 일정 등록(단일/일괄)
 - 경기 결과 입력/수정, 페어플레이 입력, 경기 삭제
 - 대회 기본정보(`/admin/settings`): 경기장/팀 번호 관리 (1차/2차 리그 구분)
+- 경기 결과 자동 수집(`/admin/crawl-results`): joinkfa.com에서 자동 크롤링 및 DB 업데이트
 - 모든 관리자 서브 페이지에 네비게이션 버튼 추가
 
 ---
@@ -283,20 +293,28 @@ JG_Manager/
 │   ├── teams/
 │   ├── rules/
 │   ├── api/
-│   │   └── time/               # 서버 시간 동기화 API
+│   │   ├── time/               # 서버 시간 동기화 API
+│   │   └── crawl/
+│   │       └── results/        # 경기 결과 크롤링 API
 │   └── admin/
 │       ├── matches/
-│       └── settings/          # 대회 기본정보
+│       ├── settings/          # 대회 기본정보
+│       └── crawl-results/     # 경기 결과 자동 수집
 ├── components/
 │   ├── Dashboard/             # MatchCard, WeeklyForecastCard, CurrentDateTime
 │   ├── Match/                 # MatchForm, BulkUploadForm, FairPlayForm 등
 │   ├── Admin/                 # VenueManager, TeamNumberManager
 │   ├── Venues/                # VenueMap, VenueList
+│   ├── Crawl/                 # CrawlResultsForm
 │   └── Layout/
 ├── lib/
 │   ├── supabase/              # server/client/queries
 │   ├── weather.ts             # KMA + OpenWeatherMap 날씨 API
 │   ├── venues.ts               # 경기장 유틸리티
+│   ├── crawl/                 # 경기 결과 크롤링
+│   │   ├── joinkfa.ts         # joinkfa.com 크롤링 로직
+│   │   ├── api.ts             # joinkfa.com API 직접 호출
+│   │   └── match.ts           # 크롤링 결과와 DB 경기 매칭
 │   └── utils.ts
 ├── supabase/
 │   └── migrations/
@@ -313,14 +331,11 @@ JG_Manager/
 - [ ] 경기 종료 시 **유튜브 링크 입력/재생 UX** 고도화
 - [ ] 내 팀 설정을 계정 기반(서버 저장)으로 확장(user_preferences 등)
 - [ ] 2차 리그 일정/조 편성 기능 확장
-- [ ] **경기 결과 자동 크롤링 기능** (재구현 예정)
-  - 각 종 대회의 경기 결과를 웹페이지에서 크롤링하여 자동으로 업데이트
-  - 1차/2차 리그 경기 결과 자동 수집 및 DB 업데이트
-  - 관리자 페이지에서 크롤링 실행 및 결과 확인
-  - 크롤링 대상 URL 설정 및 스케줄링 기능
-  - 경기 매칭 로직 (팀명, 날짜, 시간 기반)
-  - 크롤링 결과 검증 및 오류 처리
-  - **참고**: 이전 구현(v1.5.0)은 삭제되었으며, 새로운 구조로 재구현 예정
+- [ ] **경기 결과 자동 크롤링 기능** 스케줄링 및 고도화
+  - 정기 자동 크롤링 (스케줄링)
+  - 크롤링 히스토리 관리
+  - 팀명 매핑 관리 UI
+  - 다중 대회 지원
 
 ### 품질
 - [ ] `react-hooks/exhaustive-deps` 경고 정리(`FairPlayForm`)
@@ -338,12 +353,44 @@ JG_Manager/
 ## 📋 문서 정보
 
 **📅 문서 작성일**: 2026-01-28 15:00:00  
-**🔄 최종 업데이트**: 2026-01-31  
-**📝 현재 버전**: v1.8.0  
+**🔄 최종 업데이트**: 2026-02-01  
+**📝 현재 버전**: v1.9.0  
 **✍️ 작성자**: AI Assistant (Claude Sonnet 4.5)  
 **🛠️ 개발 도구**: Cursor IDE
 
 ## 📝 버전 관리
+
+### v1.9.0 (2026-02-01)
+**작성일시**: 2026-02-01  
+**🔄 주요 변경사항**:
+- ✅ 경기 결과 자동 수집 기능 재구현 완료
+  - joinkfa.com에서 경기 결과 자동 크롤링 기능 구현
+  - Playwright 기반 브라우저 자동화 및 Network API 응답 가로채기
+  - 고정 대회 ID 기반 크롤링 (U11, U12)
+  - 경기번호 우선 매칭 로직 (경기번호 → 팀명+날짜+시간)
+  - 크롤링 결과를 DB에 자동 업데이트
+  - 관리자 UI (`/admin/crawl-results`) 구현
+  - 크롤링 실행 및 결과 확인 기능
+- ✅ 핵심 파일 구조
+  - `lib/crawl/joinkfa.ts`: joinkfa.com 크롤링 로직
+  - `lib/crawl/api.ts`: joinkfa.com API 직접 호출
+  - `lib/crawl/match.ts`: 크롤링 결과와 DB 경기 매칭 로직
+  - `app/api/crawl/results/route.ts`: 크롤링 실행 API 엔드포인트
+  - `app/admin/crawl-results/page.tsx`: 관리자 크롤링 UI
+  - `components/Crawl/CrawlResultsForm.tsx`: 크롤링 실행 폼 컴포넌트
+- ✅ 주요 기능
+  - Network API 응답 가로채기 방식으로 경기 결과 추출
+  - 경기번호 기반 정확한 매칭 (우선순위 1)
+  - 팀명+날짜+시간 기반 매칭 (우선순위 2)
+  - 경기번호 자동 업데이트 (크롤링한 경기번호가 DB에 없거나 다른 경우)
+  - 매칭 실패 경기 목록 제공
+  - 크롤링 통계 및 에러 로그 표시
+
+**📝 기술적 결정 사항**:
+- Playwright를 사용한 브라우저 자동화로 SPA 구조 대응
+- Network API 응답 가로채기 방식으로 데이터 추출 (DOM 파싱보다 안정적)
+- 경기번호를 우선 매칭 키로 사용하여 정확도 향상
+- 고정 대회 ID 사용으로 필터 UI 자동화 복잡도 감소
 
 ### v1.8.0 (2026-01-31)
 **작성일시**: 2026-01-31  

@@ -192,13 +192,19 @@ export function convertMatchResultToCrawledMatch(
   // 조 정보 추출
   const group = match.MATCH_GROUP || undefined;
   
-  // 경기번호 추출 (문자열이어도 숫자로 변환)
+  // 경기번호 추출 (MATCH_NUMBER를 숫자로 변환)
   let matchNumber: number | undefined = undefined;
   if (match.MATCH_NUMBER) {
-    const parsed = parseInt(match.MATCH_NUMBER);
-    if (!isNaN(parsed)) {
+    // 문자열이어도 숫자로 변환 시도
+    const parsed = parseInt(match.MATCH_NUMBER.toString().trim());
+    if (!isNaN(parsed) && parsed > 0) {
       matchNumber = parsed;
+      console.log(`[크롤링] 경기번호 추출: ${matchNumber} (원본: ${match.MATCH_NUMBER})`);
+    } else {
+      console.warn(`[크롤링] 경기번호 파싱 실패: ${match.MATCH_NUMBER} (숫자로 변환 불가)`);
     }
+  } else {
+    console.warn(`[크롤링] 경기번호 없음: ${match.TEAM_HOME} vs ${match.TEAM_AWAY}`);
   }
   
   return {

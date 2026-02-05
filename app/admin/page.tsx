@@ -13,10 +13,10 @@ export default function AdminPage() {
             className="p-6 bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow"
           >
             <h2 className="text-xl font-semibold text-gray-900 mb-2">
-              경기 일정 등록
+              경기일정 등록
             </h2>
             <p className="text-gray-600 text-sm">
-              새로운 경기 일정을 등록합니다.
+              새로운 경기일정을 등록합니다.
             </p>
           </Link>
 

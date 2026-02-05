@@ -5,8 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryProvider } from "@/components/Providers/ReactQueryProvider";
 
 export const metadata: Metadata = {
-  // title: "진건초_2026 서귀포 칠십리 유소년 축구 페스티벌",
-  title: "Festival",
+  title: "2026 서귀포 칠십리 춘계 유소년 축구 페스티벌",
   description: "유소년 축구팀 대회 일정 및 결과 관리 시스템",
 };
 

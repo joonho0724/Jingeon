@@ -37,8 +37,11 @@ npm install
 ```env
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
 NEXT_PUBLIC_KAKAO_MAP_API_KEY=your_kakao_map_api_key
 ```
+
+**중요**: `SUPABASE_SERVICE_ROLE_KEY`는 서버 사이드에서만 사용되며, RLS 정책을 우회합니다. 절대 클라이언트 사이드 코드에 노출되지 않도록 주의하세요.
 
 3. Supabase SQL Editor에서 `supabase/migrations/001_initial_schema.sql` 실행
 

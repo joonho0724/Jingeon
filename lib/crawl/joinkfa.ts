@@ -120,6 +120,12 @@ export async function crawlJoinkfaResults(options?: {
     if (tournamentIds && tournamentIds.length > 0) {
       console.log(`[크롤링] API 직접 호출 방식 사용: ${tournamentIds.length}개 대회 ID`);
       
+      // 고정 대회 ID와 연령대 매핑 (명시적 매핑)
+      const FIXED_TOURNAMENT_AGE_GROUP_MAP: Map<string, 'U11' | 'U12'> = new Map([
+        ['FD97448A46EF60040FC2E775B7A0DDAA', 'U11'], // U11
+        ['78D62A19F1433619C7BE7A52677F2151', 'U12'], // U12
+      ]);
+      
       // 먼저 대회 정보 조회 (연령대 확인용)
       let tournamentInfoMap: Map<string, { title: string; ageGroup: 'U11' | 'U12'; startDate: string }> = new Map();
       
@@ -159,10 +165,13 @@ export async function crawlJoinkfaResults(options?: {
         try {
           console.log(`[크롤링] API 호출: getMatchSingleList.do (대회 ID: ${tournamentId})`);
           
-          // 대회 정보 확인
+          // 대회 정보 확인 (고정 매핑 우선, 없으면 조회 결과 사용, 없으면 기본값)
           const tournamentInfo = tournamentInfoMap.get(tournamentId);
-          const ageGroup = tournamentInfo?.ageGroup || 'U11'; // 기본값 U11
+          // 고정 매핑에서 먼저 확인
+          let ageGroup: 'U11' | 'U12' = FIXED_TOURNAMENT_AGE_GROUP_MAP.get(tournamentId) || tournamentInfo?.ageGroup || 'U11';
           const tournamentName = tournamentInfo?.title || '';
+          
+          console.log(`[크롤링] 대회 ID ${tournamentId}의 연령대: ${ageGroup} (고정 매핑: ${FIXED_TOURNAMENT_AGE_GROUP_MAP.has(tournamentId) ? '사용' : '없음'}, 조회 결과: ${tournamentInfo ? '사용' : '없음'})`);
           
           // 대회 시작일에서 년-월 추출 (예: "2026-02-06" -> "2026-02")
           let yearMonth: string | undefined = undefined;

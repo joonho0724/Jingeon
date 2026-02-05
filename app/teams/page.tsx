@@ -37,7 +37,7 @@ export default async function TeamsPage() {
                     {team.name}
                   </h3>
                   <p className="text-gray-600 text-sm">
-                    {team.group_name}조
+                    {team.group_name1}조
                   </p>
                 </Link>
               ))}

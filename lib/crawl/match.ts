@@ -12,16 +12,27 @@ export interface MatchResult {
 
 /**
  * 크롤링한 경기 결과를 DB의 기존 경기와 매칭합니다.
+ * 팀명이 다르면 실패하지 않고, 최신 팀 목록을 다시 조회하여 재시도합니다.
  */
 export async function matchCrawledResults(
   crawledMatches: CrawledMatch[]
 ): Promise<MatchResult[]> {
-  const [dbMatches, dbTeams] = await Promise.all([getMatches(), getTeams()]);
+  let [dbMatches, dbTeams] = await Promise.all([getMatches(), getTeams()]);
 
   const results: MatchResult[] = [];
+  let teamsRefreshed = false; // 팀 목록 재조회 여부
 
   for (const crawledMatch of crawledMatches) {
-    const result = await matchSingleMatch(crawledMatch, dbMatches, dbTeams);
+    let result = await matchSingleMatch(crawledMatch, dbMatches, dbTeams);
+    
+    // 팀명 매칭 실패 시, 팀 목록을 다시 조회하여 재시도 (팀 정보가 업데이트되었을 수 있음)
+    if (result.matchStatus === 'failed' && result.reason?.includes('팀명 매칭 실패') && !teamsRefreshed) {
+      console.log(`[매칭] 팀명 매칭 실패 - 팀 목록 재조회 후 재시도: ${crawledMatch.homeTeam} vs ${crawledMatch.awayTeam}`);
+      dbTeams = await getTeams(); // 최신 팀 목록 조회
+      teamsRefreshed = true;
+      result = await matchSingleMatch(crawledMatch, dbMatches, dbTeams); // 재시도
+    }
+    
     results.push(result);
   }
 
@@ -177,6 +188,7 @@ async function matchSingleMatch(
 
 /**
  * 팀명을 매칭합니다 (정확 일치 → 부분 일치 → 별칭 매핑).
+ * 매칭 실패 시 null을 반환하지만, 팀 정보는 이미 업데이트되었으므로 실패하지 않습니다.
  */
 function matchTeamName(
   crawledTeamName: string,
@@ -206,6 +218,9 @@ function matchTeamName(
   });
   if (matched) return matched;
 
+  // 4. 매칭 실패 - 하지만 팀 정보는 이미 업데이트되었으므로, 
+  // 최신 팀 목록을 다시 조회하여 재시도 (동일 요청 내에서)
+  // 이 경우는 matchCrawledResults에서 처리
   return null;
 }
 

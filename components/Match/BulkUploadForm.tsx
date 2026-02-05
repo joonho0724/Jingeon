@@ -286,7 +286,7 @@ export default function BulkUploadForm({ teams, venues }: BulkUploadFormProps) {
 
   return (
     <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-      <h2 className="text-xl font-semibold text-gray-900 mb-4">경기 일정 일괄 등록</h2>
+      <h2 className="text-xl font-semibold text-gray-900 mb-4">경기일정 일괄 등록</h2>
       
       {error && (
         <div className="mb-4 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded whitespace-pre-line">

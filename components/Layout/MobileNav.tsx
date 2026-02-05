@@ -42,14 +42,14 @@ export default function MobileNav({ admin, session }: MobileNavProps) {
                 className="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100"
                 onClick={() => setIsOpen(false)}
               >
-                경기 일정
+                경기일정
               </Link>
               <Link
                 href="/standings"
                 className="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100"
                 onClick={() => setIsOpen(false)}
               >
-                순위표
+                대회결과
               </Link>
               <Link
                 href="/rules"
