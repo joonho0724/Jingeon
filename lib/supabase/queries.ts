@@ -251,6 +251,8 @@ export async function updateMatchResult(
     status: '종료';
     youtube_link?: string;
     match_no?: number;
+    date?: string;
+    time?: string;
   }
 ): Promise<Match | null> {
   const supabase = createAdminClient();

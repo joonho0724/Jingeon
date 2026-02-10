@@ -63,7 +63,7 @@ async function matchSingleMatch(
     };
   }
 
-  // 2. 경기 매칭 (경기번호 우선 → 팀명 + 날짜 + 시간)
+  // 2. 경기 매칭 (경기번호 우선 → 팀명 + 연령대만)
   let matchedMatches = dbMatches.filter((match) => {
     // 경기번호가 있으면 우선 매칭 (가장 정확함)
     if (crawledMatch.matchNumber && match.match_no) {
@@ -80,8 +80,8 @@ async function matchSingleMatch(
       return false;
     }
 
-    // 경기번호가 없거나 DB에 경기번호가 없으면 기존 방식으로 매칭 (팀명 + 날짜 + 시간)
-    // 팀 매칭
+    // 경기번호가 없거나 DB에 경기번호가 없으면 팀명 + 연령대만으로 매칭
+    // (날짜/시간은 변경될 수 있으므로 무시)
     const teamMatch =
       (match.home_team_id === homeTeam.id && match.away_team_id === awayTeam.id) ||
       (match.home_team_id === awayTeam.id && match.away_team_id === homeTeam.id);
@@ -91,16 +91,8 @@ async function matchSingleMatch(
     // 연령대 매칭
     if (match.age_group !== crawledMatch.ageGroup) return false;
 
-    // 날짜 매칭
-    if (match.date !== crawledMatch.date) return false;
-
-    // 시간 매칭 (30분 이내 차이 허용)
-    if (match.time && crawledMatch.time) {
-      const matchTime = parseTime(match.time);
-      const crawledTime = parseTime(crawledMatch.time);
-      const diffMinutes = Math.abs(matchTime - crawledTime);
-      if (diffMinutes > 30) return false;
-    }
+    // 날짜/시간 매칭 제거 - 크롤링한 정보가 가장 정확하므로 날짜/시간 변경을 허용
+    // 날짜와 시간은 크롤링 결과로 업데이트될 예정이므로 매칭 조건에서 제외
 
     return true;
   });
@@ -119,16 +111,7 @@ async function matchSingleMatch(
       // 연령대 매칭
       if (match.age_group !== crawledMatch.ageGroup) return false;
 
-      // 날짜 매칭
-      if (match.date !== crawledMatch.date) return false;
-
-      // 시간 매칭 (30분 이내 차이 허용)
-      if (match.time && crawledMatch.time) {
-        const matchTime = parseTime(match.time);
-        const crawledTime = parseTime(crawledMatch.time);
-        const diffMinutes = Math.abs(matchTime - crawledTime);
-        if (diffMinutes > 30) return false;
-      }
+      // 날짜/시간 매칭 제거 - 크롤링한 정보가 가장 정확하므로 날짜/시간 변경을 허용
 
       return true;
     });
@@ -140,8 +123,8 @@ async function matchSingleMatch(
 
   if (matchedMatches.length === 0) {
     const reason = crawledMatch.matchNumber 
-      ? `매칭되는 경기를 찾을 수 없습니다. (경기번호: ${crawledMatch.matchNumber}, 연령대: ${crawledMatch.ageGroup}, 날짜: ${crawledMatch.date}, 시간: ${crawledMatch.time})`
-      : `매칭되는 경기를 찾을 수 없습니다. (연령대: ${crawledMatch.ageGroup}, 날짜: ${crawledMatch.date}, 시간: ${crawledMatch.time}, 팀: ${crawledMatch.homeTeam} vs ${crawledMatch.awayTeam})`;
+      ? `매칭되는 경기를 찾을 수 없습니다. (경기번호: ${crawledMatch.matchNumber}, 연령대: ${crawledMatch.ageGroup}, 팀: ${crawledMatch.homeTeam} vs ${crawledMatch.awayTeam})`
+      : `매칭되는 경기를 찾을 수 없습니다. (연령대: ${crawledMatch.ageGroup}, 팀: ${crawledMatch.homeTeam} vs ${crawledMatch.awayTeam})`;
     console.log(`[매칭 실패] ${reason}`);
     return {
       crawledMatch,
@@ -151,11 +134,26 @@ async function matchSingleMatch(
   }
 
   if (matchedMatches.length > 1) {
-    return {
-      crawledMatch,
-      matchStatus: 'duplicate',
-      reason: `여러 경기가 매칭되었습니다 (${matchedMatches.length}개).`,
-    };
+    // 여러 경기가 매칭된 경우, 경기번호가 있으면 경기번호로 필터링
+    if (crawledMatch.matchNumber) {
+      const matchNoFiltered = matchedMatches.filter(m => m.match_no === crawledMatch.matchNumber);
+      if (matchNoFiltered.length === 1) {
+        matchedMatches = matchNoFiltered;
+        console.log(`[매칭] 경기번호로 중복 해결: ${crawledMatch.matchNumber}`);
+      } else {
+        return {
+          crawledMatch,
+          matchStatus: 'duplicate',
+          reason: `여러 경기가 매칭되었습니다 (${matchedMatches.length}개). 경기번호로도 구분할 수 없습니다.`,
+        };
+      }
+    } else {
+      return {
+        crawledMatch,
+        matchStatus: 'duplicate',
+        reason: `여러 경기가 매칭되었습니다 (${matchedMatches.length}개). 경기번호가 없어 구분할 수 없습니다.`,
+      };
+    }
   }
 
   const matchedMatch = matchedMatches[0];

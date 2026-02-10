@@ -153,6 +153,8 @@ export async function POST(request: NextRequest) {
             away_score: number;
             status: '종료';
             match_no?: number;
+            date?: string;
+            time?: string;
           } = {
             home_score: matchResult.crawledMatch.homeScore,
             away_score: matchResult.crawledMatch.awayScore,
@@ -169,6 +171,20 @@ export async function POST(request: NextRequest) {
               console.log(`[API] 경기번호 업데이트 (null → ${matchResult.crawledMatch.matchNumber}): ${matchResult.matchedMatchId}, ${matchResult.crawledMatch.homeTeam} vs ${matchResult.crawledMatch.awayTeam}`);
             } else if (currentMatchNo !== matchResult.crawledMatch.matchNumber) {
               console.log(`[API] 경기번호 업데이트 (${currentMatchNo} → ${matchResult.crawledMatch.matchNumber}): ${matchResult.matchedMatchId}, ${matchResult.crawledMatch.homeTeam} vs ${matchResult.crawledMatch.awayTeam}`);
+            }
+          }
+
+          // 크롤링한 날짜와 시간으로 업데이트 (크롤링 정보가 가장 정확함)
+          if (matchResult.crawledMatch.date) {
+            updateData.date = matchResult.crawledMatch.date;
+            if (existingMatch?.date !== matchResult.crawledMatch.date) {
+              console.log(`[API] 날짜 업데이트 (${existingMatch?.date || 'N/A'} → ${matchResult.crawledMatch.date}): ${matchResult.matchedMatchId}`);
+            }
+          }
+          if (matchResult.crawledMatch.time) {
+            updateData.time = matchResult.crawledMatch.time;
+            if (existingMatch?.time !== matchResult.crawledMatch.time) {
+              console.log(`[API] 시간 업데이트 (${existingMatch?.time || 'N/A'} → ${matchResult.crawledMatch.time}): ${matchResult.matchedMatchId}`);
             }
           }
 
