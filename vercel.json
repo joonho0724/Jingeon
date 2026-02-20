@@ -1,0 +1,10 @@
+{
+  "buildCommand": "npm run build",
+  "installCommand": "npm install && npx playwright install chromium",
+  "framework": "nextjs",
+  "functions": {
+    "app/api/crawl/results/route.ts": {
+      "maxDuration": 300
+    }
+  }
+}
